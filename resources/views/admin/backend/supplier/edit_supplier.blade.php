@@ -8,12 +8,12 @@
 
                         <div class="py-3 d-flex align-items-sm-center flex-sm-row flex-column">
                             <div class="flex-grow-1">
-                                <h4 class="fs-18 fw-semibold m-0">Add Supplier</h4>
+                                <h4 class="fs-18 fw-semibold m-0">Edit Supplier</h4>
                             </div>
             
                             <div class="text-end">
                                 <ol class="breadcrumb m-0 py-0">
-                                    <li class="breadcrumb-item active">Add Supplier</li>
+                                    <li class="breadcrumb-item active">Edit Supplier</li>
                                 </ol>
                             </div>
                         </div>
@@ -23,27 +23,40 @@
                             <div class="col-xl-12">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h5 class="card-title mb-0">Add Supplier</h5>
+                                        <h5 class="card-title mb-0">Edit Supplier</h5>
                                     </div><!-- end card header -->
         
                                     <div class="card-body">
-                                        <form id="myForm" class="row g-3" action="{{route('store.supplier')}}" method="post">
+                                        <form id="myForm" class="row g-3" action="{{route('update.supplier')}}" method="post">
                                             @csrf
-                                            <div class="form-group col-md-4">
+                                            <input type="hidden" name="id" value="{{$supplier->id}}" />
+                                            <div class="form-group col-md-6">
                                                 <label for="validationDefault01" class="form-label">Supplier Name</label>
-                                                <input type="text" class="form-control" name="name">
+                                                <input type="text" class="form-control @error('name') is-invalid @enderror" value="{{$supplier->name}}" name="name">
+                                                @error('name')
+                                                    <div class="invalid-feedback">{{$message}}</div>
+                                                @enderror
                                             </div>
-                                            <div class="form-group col-md-4">
+                                            <div class="form-group col-md-6">
                                                 <label for="validationDefault01" class="form-label">Supplier Email</label>
-                                                <input type="email" class="form-control" name="email">
+                                                <input type="email" value="{{$supplier->email}}" class="form-control @error('email') is-invalid @enderror" name="email">
+                                                @error('email')
+                                                    <div class="invalid-feedback">{{$message}}</div>
+                                                @enderror
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="col-md-6">
                                                 <label for="validationDefault01" class="form-label">Supplier Phone</label>
-                                                <input type="text" class="form-control" name="phone">
+                                                <input type="text" value="{{$supplier->phone}}" class="form-control @error('phone') is-invalid @enderror" name="phone">
+                                                @error('phone')
+                                                    <div class="invalid-feedback">{{$message}}</div>
+                                                @enderror
                                             </div>
-                                            <div class="form-group col-md-12">
-                                                <label for="validationDefault01" class="form-label">Supplier Address</label>
-                                                <textarea class="form-control" name="address"></textarea>
+                                            <div class="form-group col-md-6">
+                                                <label for="validationDefault01" class="form-label">Supplier address</label>
+                                                <input type="text" value="{{$supplier->address}}" class="form-control @error('address') is-invalid @enderror" name="address">
+                                                @error('address')
+                                                    <div class="invalid-feedback">{{$message}}</div>
+                                                @enderror
                                             </div>
                                             <div class="col-12">
                                                 <button class="btn btn-primary" type="submit">Save Change</button>
