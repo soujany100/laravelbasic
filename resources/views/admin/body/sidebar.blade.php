@@ -17,7 +17,7 @@
                                     <img src="{{asset('backend/assets/images/logo-sm.png')}}" alt="" height="22">
                                 </span>
                                 <span class="logo-lg">
-                                    <img src="{{asset('backend/assets/images/logo-dark.png')}}" alt="" height="24">
+                                    <img src="{{asset('backend/assets/images/inventory.png')}}" alt="" height="50">
                                 </span>
                             </a>
                         </div>
@@ -40,6 +40,34 @@
                                     <ul class="nav-second-level">
                                         <li>
                                             <a href="{{route('all.brand')}}" class="tp-link">All Brand</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="#WareHouse" data-bs-toggle="collapse">
+                                    <i data-feather="users"></i>
+                                    <span> WareHouse Manage </span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <div class="collapse" id="WareHouse">
+                                    <ul class="nav-second-level">
+                                        <li>
+                                            <a href="{{route('all.warehouse')}}" class="tp-link">All WareHouse</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="#Supplier" data-bs-toggle="collapse">
+                                    <i data-feather="users"></i>
+                                    <span> Supplier Manage </span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <div class="collapse" id="Supplier">
+                                    <ul class="nav-second-level">
+                                        <li>
+                                            <a href="{{route('all.supplier')}}" class="tp-link">All Supplier</a>
                                         </li>
                                     </ul>
                                 </div>

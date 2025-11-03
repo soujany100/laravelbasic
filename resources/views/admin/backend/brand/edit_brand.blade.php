@@ -23,7 +23,7 @@
                             <div class="col-xl-12">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h5 class="card-title mb-0">Add Brand</h5>
+                                        <h5 class="card-title mb-0">Edit Brand</h5>
                                     </div><!-- end card header -->
         
                                     <div class="card-body">
