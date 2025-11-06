@@ -4,28 +4,28 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Supplier;
+use App\Models\Customer;
 
-class SupplierController extends Controller
+class CustomerController extends Controller
 {
-    public function AllSupplier() {
-        $supplier = Supplier::latest()->get();
-        return view('admin.backend.supplier.all_supplier', compact('supplier'));
+    public function AllCustomer() {
+        $customer = Customer::latest()->get();
+        return view('admin.backend.customer.all_customer', compact('customer'));
     } // End Method
 
-    public function AddSupplier() {
-        return view('admin.backend.supplier.add_supplier');
+    public function AddCustomer() {
+        return view('admin.backend.customer.add_customer');
     } // End Method
 
-    public function StoreSupplier(Request $request) {
+    public function StoreCustomer(Request $request) {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:suppliers,email|max:255',
+            'email' => 'required|email|unique:customers,email|max:255',
             'phone' => 'nullable|string|max:20',
             'address' => 'required|string|max:255',
         ]);
 
-        Supplier::create([
+        Customer::create([
             'name' => $validated['name'],
             'email' => $validated['email'],
             'phone' => $validated['phone'],
@@ -33,28 +33,28 @@ class SupplierController extends Controller
         ]);
 
         $notification = array(
-            'message' => 'Supplier inserted successfully',
+            'message' => 'Customer inserted successfully',
             'alert-type' => 'success'
         );
 
-        return redirect()->route('all.supplier')->with($notification);
+        return redirect()->route('all.customer')->with($notification);
     } // End Method
 
-    public function EditSupplier($id){
-        $supplier = Supplier::find($id);
-        return view('admin.backend.supplier.edit_supplier', compact('supplier'));
+    public function EditCustomer($id){
+        $customer = Customer::find($id);
+        return view('admin.backend.customer.edit_customer', compact('customer'));
     } // End Method
 
-    public function UpdateSupplier(Request $request) {
-        $supplier_id = $request->id;
+    public function UpdateCustomer(Request $request) {
+        $customer_id = $request->id;
         $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:suppliers,email|max:255',
+            'email' => 'required|email|unique:customers,email|max:255',
             'phone' => 'nullable|string|max:20',
             'address' => 'nullable|string|max:255',
         ]);
 
-        Supplier::find($supplier_id)->update([
+        Customer::find($customer_id)->update([
             'name' => $validated['name'],
             'email' => $validated['email'],
             'phone' => $validated['phone'],
@@ -62,17 +62,17 @@ class SupplierController extends Controller
         ]);
 
         $notification = array(
-            'message' => 'Supplier updated successfully',
+            'message' => 'Customer updated successfully',
             'alert-type' => 'success'
         );
 
-        return redirect()->route('all.supplier')->with($notification);
+        return redirect()->route('all.customer')->with($notification);
     } // End Method
 
-    public function DeleteSupplier($id) {
-        Supplier::find($id)->delete();
+    public function DeleteCustomer($id) {
+        Customer::find($id)->delete();
         $notification = array(
-            'message' => 'Supplier deleted successfully',
+            'message' => 'Customer deleted successfully',
             'alert-type' => 'success'
         );
         return redirect()->back()->with($notification);
