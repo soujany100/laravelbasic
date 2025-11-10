@@ -8,6 +8,7 @@ use App\Http\Controllers\Backend\WareHouseController;
 use App\Http\Controllers\Backend\SupplierController;
 use App\Http\Controllers\Backend\CustomerController;
 use App\Http\Controllers\Backend\ProductController;
+use App\Http\Controllers\Backend\PurchaseController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -85,5 +86,8 @@ Route::middleware('auth')->group(function() {
         Route::post('/update/product', 'UpdateProduct')->name('update.product');
         Route::get('/delete/product/{id}', 'DeleteProduct')->name('delete.product');
          Route::get('/details/product/{id}', 'DetailsProduct')->name('details.product');
+    });
+    Route::controller(PurchaseController::class)->group(function() {
+        Route::get('/all/purchase', 'AllPurchase')->name('all.purchase');
     });
 });

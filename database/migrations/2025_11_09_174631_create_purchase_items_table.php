@@ -13,7 +13,18 @@ return new class extends Migration
     {
         Schema::create('purchase_items', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('purchase_id');
+            $table->unsignedBigInteger('product_id');
+            $table->decimal('net_unit_cost', 10 , 2);
+            $table->integer('stock');
+            $table->integer('quantity');
+            $table->decimal('discount', 10 , 2)->default(0.00);
+            $table->decimal('subtotal', 10 , 2);
             $table->timestamps();
+
+            // Foreign Key Relations
+            $table->foreign('purchase_id')->references('id')->on('purchases')->onDelete('cascade');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
         });
     }
 
